@@ -1,22 +1,23 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
+import "dotenv/config";
 
-dotenv.config();
+import app from "./app.js";
+import { pool } from "./config/database.js";
 
-const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
 
-app.use(cors());
-app.use(express.json());
+async function startServer(): Promise<void> {
+  try {
+    await pool.query("SELECT 1");
 
-app.get("/api/health", (_req, res) => {
-  res.status(200).json({
-    status: "ok",
-    message: "Money Tiana API is running",
-  });
-});
+    app.listen(PORT, () => {
+      console.log(`Money Tiana API running on http://localhost:${PORT}`);
+      console.log("PostgreSQL connection successful");
+    });
+  } catch (error) {
+    console.error("Unable to connect to PostgreSQL:", error);
+    await pool.end();
+    process.exitCode = 1;
+  }
+}
 
-app.listen(PORT, () => {
-  console.log(`Money Tiana API is running on http://localhost:${PORT}`);
-});
+startServer();
