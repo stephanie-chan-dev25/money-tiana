@@ -1,3 +1,6 @@
+import transactionRoutes from "./routes/transaction.routes.js";
+import categoryRoutes from "./routes/category.routes.js";
+import walletRoutes from "./routes/wallet.routes.js";
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -31,7 +34,9 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/wallets", walletRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/transactions", transactionRoutes);
 // Ce middleware doit rester après les routes.
 app.use(errorMiddleware);
 
