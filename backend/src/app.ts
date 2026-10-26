@@ -1,3 +1,4 @@
+import dashboardRoutes from "./routes/dashboard.routes.js";
 import transactionRoutes from "./routes/transaction.routes.js";
 import categoryRoutes from "./routes/category.routes.js";
 import walletRoutes from "./routes/wallet.routes.js";
@@ -37,6 +38,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/wallets", walletRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/transactions", transactionRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 // Ce middleware doit rester après les routes.
 app.use(errorMiddleware);
 
