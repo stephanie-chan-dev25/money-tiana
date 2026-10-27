@@ -1,10 +1,11 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import { getApiError } from "../../services/api";
 
 export default function AuthPage({ mode }: { mode: "login" | "register" }) {
   const isRegister = mode === "register";
+  useEffect(() => { document.title = `${isRegister ? "Create Account" : "Sign In"} | Money Tiana`; }, [isRegister]);
   const { user, loading, login, register } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();

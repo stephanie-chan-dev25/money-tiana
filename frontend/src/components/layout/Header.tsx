@@ -1,15 +1,17 @@
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 
 const titles: Record<string, string> = {
-  "/": "Dashboard", "/wallets": "My wallets", "/transactions": "Transactions",
-  "/categories": "Categories", "/goals": "Financial goals",
+  "/": "Dashboard", "/wallets": "Wallets", "/transactions": "Transactions",
+  "/categories": "Categories", "/goals": "Financial Goals",
 };
 export default function Header() {
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const title = titles[location.pathname] ?? "Money Tiana";
+  useEffect(() => { document.title = `${title} | Money Tiana`; }, [title]);
   async function handleLogout() {
     try { await logout(); } finally { navigate("/login", { replace: true }); }
   }
