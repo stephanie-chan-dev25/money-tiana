@@ -6,6 +6,7 @@ dotenv.config();
 const { Pool } = pg;
 
 const isProduction = process.env.NODE_ENV === "production";
+const ca = process.env.SUPABASE_CA_CERT;
 
 export const pool = new Pool({
   host: process.env.DB_HOST,
@@ -15,6 +16,7 @@ export const pool = new Pool({
   password: process.env.DB_PASSWORD,
   ...(isProduction && {
     ssl: {
+      ca,
       rejectUnauthorized: true,
     },
   }),
