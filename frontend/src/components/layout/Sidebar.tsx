@@ -28,7 +28,7 @@ export default function Sidebar() {
       </NavLink>)}
     </nav>
     <button type="button" className="sidebar-bottom help-trigger" onClick={() => setHelpOpen(true)} aria-haspopup="dialog" aria-expanded={helpOpen}>
-      <span className="help-mark">?</span><span className="help-copy"><strong>Need help?</strong><span>Manage your money with confidence.</span></span>
+      <span className="help-mark" aria-hidden="true">?</span><span className="help-copy"><strong>Need help?</strong><span>Manage your money with confidence.</span></span>
     </button>
   </aside>
   {helpOpen && <div className="help-overlay" onMouseDown={event => { if (event.target === event.currentTarget) setHelpOpen(false); }}>

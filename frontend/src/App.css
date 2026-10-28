@@ -19,3 +19,18 @@
 .help-dialog .primary-button{margin-top:16px}
 @media(max-width:900px){.mini-breakdown{display:block}.mini-row{font-size:11px}.mini-row span{white-space:normal;overflow-wrap:anywhere}.metric-card .mini-row b{white-space:normal;text-align:right}.sidebar-bottom{cursor:pointer}}
 @media(max-width:600px){.metric-card{padding:16px}.metric-card .card-label{font-size:10px;letter-spacing:.5px}.metric-amount{font-size:clamp(21px,6vw,29px)}.metric-subtitle{font-size:11px;margin-bottom:14px}.mini-row{align-items:flex-start;font-size:11px}.help-dialog{padding:20px}.sidebar-bottom{min-height:43px}}
+
+
+/* Help button alignment and compact sidebar on tablet/mobile */
+.sidebar-bottom.help-trigger{align-items:center;gap:10px;}
+.help-mark{display:flex;align-items:center;justify-content:center;text-align:center;line-height:1;flex:0 0 25px;padding:0;}
+.help-copy{min-width:0;text-align:left;}
+@media(max-width:900px){
+  .sidebar-bottom.help-trigger{width:100%;min-height:44px;padding:8px 0;justify-content:center;align-items:center;gap:0;}
+  .sidebar-bottom.help-trigger .help-mark{width:28px;height:28px;flex:0 0 28px;margin:0 auto;}
+  .sidebar-bottom.help-trigger .help-copy{display:none;}
+}
+@media(max-width:600px){
+  .sidebar-bottom.help-trigger{min-height:42px;padding:6px 0;}
+  .sidebar-bottom.help-trigger .help-mark{width:27px;height:27px;flex-basis:27px;}
+}
